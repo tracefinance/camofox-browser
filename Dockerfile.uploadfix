@@ -1,0 +1,8 @@
+FROM camofox-browser:1.11.2-vnc
+# Overlay build for the patched server.js. Carries the prior local patches
+# (px-iframe IFRAME_SKIP, bounded boundingBox/422, PR#5724 annotateScreenshot,
+# POST /tabs/:tabId/upload) PLUS the 2026-06-18 upload chooser-settle fix:
+# the native FileChooser is now always consumed (setFiles) or dismissed
+# (cancel) BEFORE the handler returns, so a dangling raceChooser can no longer
+# leave an OS file dialog open past the tab lock / HTTP response.
+COPY server.js /app/server.js
