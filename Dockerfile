@@ -73,7 +73,7 @@ RUN sh scripts/install-plugin-deps.sh
 ENV NODE_ENV=production
 ENV CAMOFOX_PORT=9377
 
-EXPOSE 9377
+EXPOSE 9377 6080
 
 CMD ["sh", "-c", "node --max-old-space-size=${MAX_OLD_SPACE_SIZE:-128} server.js"]
 
